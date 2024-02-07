@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Publicaciones</title>
+  <link rel="stylesheet" href="styles-publicaciones.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>Mis Publicaciones</h1>
+  </header>
+  
+  <div class="container">
+    <!-- ... (resto del contenido existente) ... -->
+
+    <main>
+      <section class="post-container">
+        <!-- Formulario de Crear Publicación -->
+        <form id="createForm" class="post-form">
+          <h2>Crear Publicación</h2>
+          <label for="postTitle">Título:</label>
+          <input type="text" id="postTitle" name="postTitle" required>
+        
+          <label for="postContent">Contenido:</label>
+          <textarea id="postContent" name="postContent" required></textarea>
+        
+          <label for="postImage">Imagen:</label>
+          <input type="file" id="postImage" name="postImage" accept="image/*">
+          <div id="imagePreviewContainer"></div>
+        
+          <label for="postCategory">Categoría:</label>
+          <input type="text" id="postCategory" name="postCategory" required>
+        
+          <button type="button" onclick="createPost()">Publicar</button>
+        </form>
+
+        <!-- Lista de Publicaciones -->
+        <div id="postList" class="post-list">
+          <!-- Aquí se mostrarán las publicaciones -->
+        </div>
+      </section>
+    </main>
+
+    <div class="profile-container">
+      <div class="profile-picture">
+        <img src="profile.jpg" alt="Foto de perfil">
+      </div>
+      <div class="profile-info">
+        <h2>Nombre de Usuario</h2>
+        <p>Nombre Completo: Nombre Apellido</p>
+        <p>Correo electrónico: usuario@example.com</p>
+        <p>Edad: 25 años</p> <!-- Valor predeterminado, se puede calcular dinámicamente en JS -->
+        <button onclick="editProfile(this)">Editar Perfil</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

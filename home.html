@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Principal</title>
+  <link rel="stylesheet" href="styleshome.css">
+</head>
+<body>
+  <header>
+    <h1>Facebook</h1>
+    <!-- Barra de búsqueda -->
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar...">
+      <button>Buscar</button>
+    </div>
+
+    <div class="advanced-search">
+      <h3>Búsqueda Avanzada</h3>
+      <form>
+        <label for="advancedText">Texto:</label>
+        <input type="text" id="advancedText" name="advancedText">
+
+        <label for="advancedCategory">Categoría:</label>
+        <input type="text" id="advancedCategory" name="advancedCategory">
+
+        <label for="startDate">Fecha Inicio:</label>
+        <input type="date" id="startDate" name="startDate">
+
+        <label for="endDate">Fecha Fin:</label>
+        <input type="date" id="endDate" name="endDate">
+
+        <button type="button">Buscar</button>
+      </form>
+    </div>
+  </header>
+  
+  <main>
+    <section class="post-container">
+      <article class="post">
+        <div class="post-header">
+          <!-- Enlace al hacer clic en la foto de perfil -->
+          <a href="publicaciones.html">
+            <img src="profile.jpg" alt="Foto de perfil">
+          </a>
+          <h2>Nombre de Usuario</h2>
+        </div>
+        <p>¡Hola, esto es una publicación!</p>
+      </article>
+      <div class="pagination-container">
+        <button class="pagination-btn" onclick="prevPage()">Anterior</button>
+        <div class="pagination-pages" id="paginationPages"></div>
+        <button class="pagination-btn" onclick="nextPage()">Siguiente</button>
+      </div>
+    </section>
+  </main>
+
+  <aside>
+    <div class="profile-container">
+      <!-- Enlace al hacer clic en la foto de perfil -->
+      <a href="publicaciones.html">
+        <div class="profile-picture">
+          <img src="profile.jpg" alt="Foto de perfil">
+        </div>
+        <h2>Nombre de Usuario</h2>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Pie de página -->
+  <footer>
+    <div class="authors-info">
+      <p>Autores: Nombre1 Apellido1, Nombre2 Apellido2</p>
+    </div>
+    <div class="logout">
+      <button onclick="logout()">Cerrar Sesión</button>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

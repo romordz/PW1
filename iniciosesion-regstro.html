@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Social</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <form id="loginForm" class="active-form" onsubmit="loginUser(); return false;">
+      <h2>Iniciar sesión</h2>
+      <label for="loginUsername">Nombre de usuario:</label>
+      <input type="text" id="loginUsername" name="loginUsername" required>
+      <label for="loginPassword">Contraseña:</label>
+      <input type="password" id="loginPassword" name="loginPassword" required>
+      <button type="submit">Iniciar sesión</button>
+      <p>¿No tienes una cuenta? <a href="#" onclick="switchForm()">Regístrate</a></p>
+    </form>
+
+    <form id="registroForm" onsubmit="return validateRegistration();">
+      <h2>Registro</h2>
+      <label for="firstName">Nombre(s):</label>
+      <input type="text" id="firstName" name="firstName" required>
+
+      <label for="lastName">Apellidos:</label>
+      <input type="text" id="lastName" name="lastName" required>
+
+      <label for="birthdate">Fecha de nacimiento:</label>
+      <input type="date" id="birthdate" name="birthdate" required>
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="profileImage">Imagen de perfil:</label>
+      <input type="file" id="profileImage" name="profileImage" accept="image/*" required>
+
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="confirmPassword">Confirmar contraseña:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+      <button type="submit">Registrarse</button>
+      <p>¿Ya tienes una cuenta? <a href="#" onclick="switchForm()">Inicia sesión</a></p>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

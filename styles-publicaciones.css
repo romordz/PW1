@@ -1,0 +1,197 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
+    background-color: #4267b2;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .post-container {
+    width: 100%;
+    max-width: 800px; /* Aumenta el ancho máximo para mostrar más contenido */
+    margin: 0 auto; /* Centra el contenedor de publicaciones */
+  }
+  
+  .post-list {
+    margin-top: 20px;
+  }
+  
+  .post {
+    background-color: #fff;
+    margin: 20px 0; /* Mayor espacio entre las publicaciones */
+    padding: 20px;
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sutil sombra */
+    transition: transform 0.2s ease-in-out; /* Transición al pasar el ratón sobre una publicación */
+  }
+  
+  .post:hover {
+    transform: scale(1.02); /* Efecto de escala al pasar el ratón sobre una publicación */
+  }
+  
+  .post img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-top: 15px; /* Mayor espacio entre la imagen y el contenido */
+  }
+  
+  .post button {
+    margin-top: 15px; /* Mayor espacio entre los botones y el contenido */
+    cursor: pointer;
+    background-color: #39569c; /* Color de fondo más oscuro para resaltar los botones */
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out; /* Transición en el cambio de color de fondo */
+  }
+  
+  .post button:hover {
+    background-color: #304b87; /* Cambio de color al pasar el ratón sobre los botones */
+  }
+  
+  .post-form {
+    background-color: #fff;
+    padding: 20px; /* Mayor espacio dentro del formulario */
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .post-form label {
+    display: block;
+    margin-bottom: 10px; /* Mayor espacio entre las etiquetas y los campos de entrada */
+  }
+  
+  .post-form input,
+  .post-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px; /* Mayor espacio entre los campos de entrada */
+    box-sizing: border-box;
+    border: 1px solid #ddd; /* Borde sutil alrededor de los campos de entrada */
+    border-radius: 6px;
+  }
+  
+  .post-form button {
+    background-color: #4267b2;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .post-form button:hover {
+    background-color: #39569c; /* Cambio de color al pasar el ratón sobre el botón de publicar */
+  }
+.page-header {
+    background-color: #4267b2;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0; /* Espaciado interno superior e inferior */
+    margin-bottom: 20px; /* Espaciado inferior */
+  }
+  
+  .page-header h1 {
+    margin: 0; /* Eliminar el margen predeterminado del encabezado */
+    font-size: 2em; /* Tamaño de fuente grande */
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
+    background-color: #4267b2;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .post-container {
+    width: 100%;
+    max-width: 800px; /* Aumenta el ancho máximo para mostrar más contenido */
+    margin: 0 auto; /* Centra el contenedor de publicaciones */
+  }
+  
+  .post-list {
+    margin-top: 20px;
+  }
+  
+  /* ... (resto de estilos existentes) ... */
+  
+  .profile-container {
+    position: fixed;
+    top: 90px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Asegura que esté sobre otras capas */
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-container .profile-picture img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .profile-container h2 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .profile-container .profile-info p {
+    margin: 5px 0;
+  }
+  
+  .profile-container button {
+    background-color: #4267b2;
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  
+  .profile-container button:hover {
+    background-color: #39569c;
+  }

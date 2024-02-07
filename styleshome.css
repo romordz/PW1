@@ -1,0 +1,196 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #4267b2; /* Color de fondo similar a Facebook */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.post-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.post {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+}
+
+.post-header img {
+  width: 30px; /* Ajusta el tamaño de la foto de perfil según tus preferencias */
+  height: 30px; /* Ajusta el tamaño de la foto de perfil según tus preferencias */
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.profile-container {
+  text-align: center;
+}
+
+.profile-picture img {
+  width: 60px; /* Ajusta el tamaño de la foto de perfil según tus preferencias */
+  height: 60px; /* Ajusta el tamaño de la foto de perfil según tus preferencias */
+  border-radius: 50%;
+  margin-bottom: 5px; /* Ajusta el margen según tus preferencias */
+}
+
+.profile-container h2 {
+  font-size: 16px; /* Ajusta el tamaño del nombre de usuario según tus preferencias */
+  margin: 0; /* Elimina el margen para un diseño más compacto */
+}
+
+.search-bar {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input {
+  padding: 8px;
+  width: 200px;
+  border-radius: 20px;
+}
+
+.search-bar button {
+  background-color: #39569c;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
+  border-radius: 20px;
+}
+
+footer {
+  background-color: #4267b2;
+  color: #ffffff;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 99%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.authors-info {
+  font-size: 0.8em;
+}
+
+.logout button {
+  background-color: #39569c;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px; /* Ajusta el margen izquierdo según sea necesario */
+  border-radius: 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.logout button:hover {
+  background-color: #304b87;
+}
+
+.advanced-search {
+  margin-top: 20px;
+  padding: 10px; /* Reducido el espacio interno */
+  background-color: #39569c; /* Cambiado el color de fondo */
+  border-radius: 8px;
+  width: 99%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.advanced-search h3 {
+  font-size: 1em; /* Reducido el tamaño de fuente */
+  color: #fff; /* Cambiado el color del texto a blanco */
+  margin-bottom: 5px; /* Reducido el margen inferior */
+}
+
+.advanced-search form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.advanced-search label {
+  margin-bottom: 0;
+  margin-right: 5px;
+  color: #fff; /* Cambiado el color del texto a blanco */
+}
+
+.advanced-search input,
+.advanced-search select {
+  padding: 8px;
+  box-sizing: border-box;
+  width: 100%; /* Añadido para que los inputs ocupen todo el ancho disponible */
+}
+
+.advanced-search button {
+  background-color: #304b87; /* Cambiado el color de fondo */
+  color: #fff;
+  padding: 8px; /* Reducido el espacio interno */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.advanced-search button:hover {
+  background-color: #253d6b; /* Cambiado el color de fondo en hover */
+}
+
+/* Paginación */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-btn {
+  background-color: #39569c;
+  color: #fff;
+  padding: 8px 12px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-btn:hover {
+  background-color: #304b87;
+}
