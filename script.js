@@ -1,20 +1,14 @@
-//cambiar de inicio de sesion a registro
 function switchForm() {
   document.getElementById('loginForm').classList.toggle('active-form');
   document.getElementById('registroForm').classList.toggle('active-form');
 }
 
 function logout() {
-  // Implementar la lógica de cierre de sesión (limpiar la sesión, redirigir al inicio de sesión, etc.)
-  // Aquí, simplemente recargaremos la página
   window.location.href = "iniciosesion-regstro.html";
 }
 
 //login
 function loginUser() {
-  // Aquí deberías agregar la lógica de autenticación
-  // Por ahora, simularemos un inicio de sesión exitoso
-  // Cambia esto con tu lógica real de autenticación
   const isLoggedIn = true;
 
   if (isLoggedIn) {
@@ -23,8 +17,26 @@ function loginUser() {
 }
 
 //Registro
+const profileImageInput = document.getElementById('profileImage');
+// Obtener el elemento de vista previa de la imagen
+const imagePreview = document.getElementById('imagePreview');
+
+// Agregar un event listener para el cambio en el input de la imagen
+profileImageInput.addEventListener('change', function() {
+  // Verificar si se seleccionó una imagen
+  if (this.files && this.files[0]) {
+    // Crear un objeto URL para la imagen seleccionada
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      // Actualizar el atributo src de la imagen de vista previa con la URL de la imagen seleccionada
+      imagePreview.src = e.target.result;
+    }
+    // Leer el archivo seleccionado como una URL de datos
+    reader.readAsDataURL(this.files[0]);
+  }
+});
+
 function validateRegistration() {
-  // Validaciones del lado del cliente
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
   const birthdate = document.getElementById('birthdate').value;
@@ -93,7 +105,6 @@ function createPost() {
   if (imageInput.files.length > 0) {
     // Si se seleccionó un archivo, usa el primer archivo
     const selectedFile = imageInput.files[0];
-    // Puedes realizar otras validaciones aquí si es necesario
     image = URL.createObjectURL(selectedFile);
   }
 
@@ -186,9 +197,6 @@ function saveChanges(postElement) {
     console.error('Los campos de entrada no pueden estar vacíos.');
     return;
   }
-
-  // Puedes realizar acciones como actualizar los elementos en la base de datos aquí
-  // Por ahora, simplemente logramos los valores actualizados
   console.log('Guardando cambios:', { title, content, image, category });
 
   // Actualizar elementos de la publicación con los nuevos valores
@@ -230,7 +238,7 @@ function viewProfile(button) {
     return;
   }
 
-  // Obtener información del usuario desde la publicación (puedes ajustar esto según tu estructura HTML)
+  // Obtener información del usuario desde la publicación
   const username = postElement.querySelector('.post-header h3').innerText;
   const fullName = postElement.querySelector('.post-header p').innerText;
 
@@ -260,7 +268,7 @@ function editProfile(button) {
     return;
   }
 
-  // Obtener información del usuario desde la publicación (puedes ajustar esto según tu estructura HTML)
+  // Obtener información del usuario desde la publicación
   const username = postElement.querySelector('.post-header h3').innerText;
   const fullName = postElement.querySelector('.post-header p').innerText;
 
@@ -295,11 +303,6 @@ function saveProfileChanges(button) {
 
   // Obtener valores editados desde el formulario
   const editedUsername = postElement.querySelector('#editUsername').value;
-
-  // Realizar validaciones aquí antes de guardar los cambios
-
-  // Puedes realizar acciones como actualizar los elementos en la base de datos aquí
-  // Por ahora, simplemente logramos los valores editados
   console.log('Guardando cambios en el perfil:', { editedUsername });
 
   // Mostrar el perfil actualizado
@@ -312,9 +315,6 @@ let currentPage = 1;
 
 // Función para mostrar las publicaciones según la página actual
 function showPosts() {
-  // Lógica para mostrar las publicaciones de acuerdo a la página actual
-  // Puedes usar AJAX o simplemente ocultar/mostrar publicaciones en el DOM
-  // Aquí un ejemplo básico:
   const allPosts = document.querySelectorAll('.post');
   const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
@@ -337,8 +337,6 @@ function prevPage() {
 }
 
 function nextPage() {
-  // Aquí deberías calcular el número total de páginas
-  // y verificar si currentPage < totalPpages antes de incrementar
   currentPage++;
   showPosts();
 }
