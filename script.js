@@ -1,4 +1,7 @@
 let totalPosts = 0;
+const postsPerPage = 10;
+let currentPage = 1;
+
 
 function switchForm() {
   document.getElementById('loginForm').classList.toggle('active-form');
@@ -309,26 +312,6 @@ function saveProfileChanges(button) {
   viewProfile(button); // Llamamos a viewProfile para volver a mostrar el perfil después de editar
 }
 
-
-// Variables para la paginación
-const postsPerPage = 10;
-let currentPage = 1;
-
-// Función para mostrar las publicaciones según la página actual
-function showPosts() {
-  const allPosts = document.querySelectorAll('.post');
-  const startIndex = (currentPage - 1) * postsPerPage;
-  const endIndex = startIndex + postsPerPage;
-
-  allPosts.forEach((post, index) => {
-    if (index >= startIndex && index < endIndex) {
-      post.style.display = 'block';
-    } else {
-      post.style.display = 'none';
-    }
-  });
-}
-
 // Funciones para la navegación de páginas
 function prevPage() {
   if (currentPage > 1) {
@@ -342,6 +325,7 @@ function nextPage() {
   showPosts();
 }
 
+// Función para mostrar las publicaciones según la página actual
 function generatePaginationButtons() {
   // Obtener el elemento paginationPages
   const paginationPages = document.getElementById('paginationPages');
@@ -365,11 +349,25 @@ function generatePaginationButtons() {
   }
 }
 
-
 // Función para ir a una página específica al hacer clic en el botón de página
 function goToPage(pageNumber) {
   currentPage = pageNumber;
   showPosts();
+}
+
+// Función para mostrar las publicaciones según la página actual
+function showPosts() {
+  const allPosts = document.querySelectorAll('.post');
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+
+  allPosts.forEach((post, index) => {
+    if (index >= startIndex && index < endIndex) {
+      post.style.display = 'block';
+    } else {
+      post.style.display = 'none';
+    }
+  });
 }
 
 // Inicializar la paginación al cargar la página
