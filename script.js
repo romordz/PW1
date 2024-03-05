@@ -86,9 +86,6 @@ function validateRegistration() {
 }
 
 //publicaciones
-const postList = document.getElementById('postList');
-const createPostForm = document.getElementById('createPostForm');
-
 function createPost() {
   const title = document.getElementById('postTitle').value;
   const content = document.getElementById('postContent').value;
@@ -173,6 +170,40 @@ function editPost(button) {
 
   postElement.appendChild(saveButton);
 }
+
+// Obtener el elemento de entrada de imagen
+const imageInput = document.getElementById('postImage');
+// Obtener el contenedor de vista previa de la imagen
+const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+
+// Escuchar el evento de cambio en el elemento de entrada de imagen
+imageInput.addEventListener('change', function() {
+  // Verificar si se seleccionó un archivo de imagen
+  if (imageInput.files && imageInput.files[0]) {
+    // Crear un objeto de archivo con el archivo seleccionado
+    const file = imageInput.files[0];
+    // Crear un objeto de lectura de archivo
+    const reader = new FileReader();
+    
+    // Definir una función de devolución de llamada para cuando se cargue la imagen
+    reader.onload = function(e) {
+      // Crear un elemento de imagen para mostrar la vista previa
+      const imgElement = document.createElement('img');
+      // Establecer el atributo de origen de la imagen en la URL de la imagen cargada
+      imgElement.src = e.target.result;
+      // Agregar la clase de Bootstrap para imágenes responsivas
+      imgElement.classList.add('img-fluid');
+      // Limpiar el contenido del contenedor de vista previa de la imagen
+      imagePreviewContainer.innerHTML = '';
+      // Agregar la imagen al contenedor de vista previa de la imagen
+      imagePreviewContainer.appendChild(imgElement);
+    }
+    
+    // Leer el contenido del archivo como una URL de datos
+    reader.readAsDataURL(file);
+  }
+});
+
 //TODO:hacer que funciones el boton de editar y guardar cambios
 
 function saveChanges(postElement) {

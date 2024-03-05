@@ -195,3 +195,42 @@ body {
   .profile-container button:hover {
     background-color: #39569c;
   }
+
+  /* Estilos para el combobox */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrapper select {
+  appearance: none; /* Oculta el estilo predeterminado del combobox */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  padding: 8px 32px 8px 12px; /* Ajusta los valores según necesites */
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.select-wrapper select:focus {
+  outline: none;
+  border-color: #007bff; /* Cambia el color del borde al estar enfocado */
+}
+
+/* Icono para el combobox */
+.select-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Cambia el color del icono según tus preferencias */
+.select-icon::after {
+  content: '\25BC'; /* Código Unicode para la flecha hacia abajo */
+  font-size: 14px;
+  color: #333;
+}
