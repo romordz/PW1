@@ -115,9 +115,9 @@ aside.bg-light {
 .btn-sm {
   width: 75px;
   height: 50px;
-  margin-top: 18px; /* Agrega un margen superior de 5px */
+  margin-top: 18px;
 }
 
 .custom-width {
-  max-width: 800px; /* Cambia el valor según lo que necesites */
+  max-width: 800px;
 }

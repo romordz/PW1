@@ -1,3 +1,5 @@
+let totalPosts = 0;
+
 function switchForm() {
   document.getElementById('loginForm').classList.toggle('active-form');
   document.getElementById('registroForm').classList.toggle('active-form');
@@ -124,6 +126,7 @@ function createPost() {
   postList.appendChild(postElement);
 }
 
+
 function editPost(button) {
   const postElement = button.closest('.post');
 
@@ -170,39 +173,6 @@ function editPost(button) {
 
   postElement.appendChild(saveButton);
 }
-
-// Obtener el elemento de entrada de imagen
-const imageInput = document.getElementById('postImage');
-// Obtener el contenedor de vista previa de la imagen
-const imagePreviewContainer = document.getElementById('imagePreviewContainer');
-
-// Escuchar el evento de cambio en el elemento de entrada de imagen
-imageInput.addEventListener('change', function() {
-  // Verificar si se seleccionó un archivo de imagen
-  if (imageInput.files && imageInput.files[0]) {
-    // Crear un objeto de archivo con el archivo seleccionado
-    const file = imageInput.files[0];
-    // Crear un objeto de lectura de archivo
-    const reader = new FileReader();
-    
-    // Definir una función de devolución de llamada para cuando se cargue la imagen
-    reader.onload = function(e) {
-      // Crear un elemento de imagen para mostrar la vista previa
-      const imgElement = document.createElement('img');
-      // Establecer el atributo de origen de la imagen en la URL de la imagen cargada
-      imgElement.src = e.target.result;
-      // Agregar la clase de Bootstrap para imágenes responsivas
-      imgElement.classList.add('img-fluid');
-      // Limpiar el contenido del contenedor de vista previa de la imagen
-      imagePreviewContainer.innerHTML = '';
-      // Agregar la imagen al contenedor de vista previa de la imagen
-      imagePreviewContainer.appendChild(imgElement);
-    }
-    
-    // Leer el contenido del archivo como una URL de datos
-    reader.readAsDataURL(file);
-  }
-});
 
 //TODO:hacer que funciones el boton de editar y guardar cambios
 
@@ -290,18 +260,18 @@ function viewProfile(button) {
   postElement.appendChild(profileContainer);
 }
 
-// Función para editar el perfil
-function editProfile(button) {
-  const postElement = button.closest('.post');
 
-  if (!postElement) {
-    console.error('No se pudo encontrar el elemento de la publicación.');
+function editProfile(button) {
+  const profileContainer = button.closest('.profile-container');
+
+  if (!profileContainer) {
+    console.error('No se pudo encontrar el contenedor del perfil.');
     return;
   }
 
-  // Obtener información del usuario desde la publicación
-  const username = postElement.querySelector('.post-header h3').innerText;
-  const fullName = postElement.querySelector('.post-header p').innerText;
+  // Obtener información del usuario desde el contenedor del perfil
+  const username = profileContainer.querySelector('.profile-info h2').innerText;
+  const fullName = profileContainer.querySelector('.profile-info p:nth-of-type(1)').innerText;
 
   // Crear contenedor para mostrar el formulario de edición del perfil
   const editProfileContainer = document.createElement('div');
@@ -309,36 +279,36 @@ function editProfile(button) {
 
   // Mostrar formulario de edición del perfil con información actual
   editProfileContainer.innerHTML = `
-    <h2>${fullName}</h2>
-    <label for="editUsername">Nombre de usuario:</label>
-    <input type="text" id="editUsername" value="${username}" required>
+    <div class="profile-info">
+      <label for="editUsername">Nombre de usuario:</label>
+      <input type="text" id="editUsername" value="${username}" required>
 
-    <!-- Aquí puedes incluir más campos para la edición del perfil -->
-
+      <!-- Aquí puedes incluir más campos para la edición del perfil -->
+    </div>
     <button onclick="saveProfileChanges(this)">Guardar Cambios</button>
   `;
 
-  // Reemplazar contenido de la publicación con el formulario de edición
-  postElement.innerHTML = '';
-  postElement.appendChild(editProfileContainer);
+  // Reemplazar contenido del contenedor del perfil con el formulario de edición
+  profileContainer.innerHTML = '';
+  profileContainer.appendChild(editProfileContainer);
 }
 
-// Función para guardar cambios en el perfil
 function saveProfileChanges(button) {
-  const postElement = button.closest('.post');
+  const profileContainer = button.closest('.profile-container');
 
-  if (!postElement) {
-    console.error('No se pudo encontrar el elemento de la publicación.');
+  if (!profileContainer) {
+    console.error('No se pudo encontrar el contenedor del perfil.');
     return;
   }
 
   // Obtener valores editados desde el formulario
-  const editedUsername = postElement.querySelector('#editUsername').value;
+  const editedUsername = profileContainer.querySelector('#editUsername').value;
   console.log('Guardando cambios en el perfil:', { editedUsername });
 
   // Mostrar el perfil actualizado
-  viewProfile(postElement.querySelector('button')); // Llamamos a viewProfile para volver a mostrar el perfil después de editar
+  viewProfile(button); // Llamamos a viewProfile para volver a mostrar el perfil después de editar
 }
+
 
 // Variables para la paginación
 const postsPerPage = 10;
@@ -372,12 +342,19 @@ function nextPage() {
   showPosts();
 }
 
-// Función para generar los botones de páginas en el paginador
 function generatePaginationButtons() {
+  // Obtener el elemento paginationPages
+  const paginationPages = document.getElementById('paginationPages');
+
+  // Verificar si paginationPages es null
+  if (!paginationPages) {
+    console.error('El elemento paginationPages no se encontró en el documento.');
+    return;
+  }
+
   // Lógica para calcular el número total de páginas
   const totalPpages = Math.ceil(totalPosts / postsPerPage);
 
-  const paginationPages = document.getElementById('paginationPages');
   paginationPages.innerHTML = '';
 
   for (let i = 1; i <= totalPpages; i++) {
@@ -387,6 +364,7 @@ function generatePaginationButtons() {
     paginationPages.appendChild(button);
   }
 }
+
 
 // Función para ir a una página específica al hacer clic en el botón de página
 function goToPage(pageNumber) {
