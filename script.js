@@ -41,6 +41,7 @@ profileImageInput.addEventListener('change', function() {
   }
 });
 
+
 function validateRegistration() {
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
@@ -91,6 +92,23 @@ function validateRegistration() {
 }
 
 //publicaciones
+
+function showImagePreview() {
+  const imageInput = document.getElementById('postImage');
+  const imagePreview = document.getElementById('imagePreview');
+
+  // Verificar si se seleccionó una imagen
+  if (imageInput.files && imageInput.files[0]) {
+    const selectedFile = imageInput.files[0];
+    const image = URL.createObjectURL(selectedFile);
+    imagePreview.src = image;
+    imagePreview.style.display = 'block'; // Mostrar la vista previa
+  } else {
+    // Si no se seleccionó una imagen, ocultar la vista previa
+    imagePreview.style.display = 'none';
+  }
+}
+
 function createPost() {
   const title = document.getElementById('postTitle').value;
   const content = document.getElementById('postContent').value;
@@ -109,7 +127,6 @@ function createPost() {
     const selectedFile = imageInput.files[0];
     image = URL.createObjectURL(selectedFile);
   }
-
   // Limpiar el formulario después de crear la publicación
   document.getElementById('createForm').reset();
 
@@ -128,7 +145,6 @@ function createPost() {
   // Agregar la nueva publicación a la lista
   postList.appendChild(postElement);
 }
-
 
 function editPost(button) {
   const postElement = button.closest('.post');
@@ -285,18 +301,32 @@ function editProfile(button) {
     <div class="profile-info">
       <label for="editUsername">Nombre de usuario:</label>
       <input type="text" id="editUsername" value="${username}" required>
-
-      <!-- Aquí puedes incluir más campos para la edición del perfil -->
     </div>
     <button onclick="saveProfileChanges(this)">Guardar Cambios</button>
   `;
-
-  // Reemplazar contenido del contenedor del perfil con el formulario de edición
   profileContainer.innerHTML = '';
   profileContainer.appendChild(editProfileContainer);
 }
 
 function saveProfileChanges(button) {
+  // Obtener el contenedor del perfil directamente
+  const profileContainer = document.querySelector('.profile-container');
+
+  // Verificar si se encontró el contenedor del perfil
+  if (!profileContainer) {
+    console.error('No se pudo encontrar el contenedor del perfil.');
+    return;
+  }
+
+  // Obtener el valor editado del nombre de usuario directamente
+  const editedUsername = profileContainer.querySelector('#editUsername').value;
+  console.log('Guardando cambios en el perfil:', { editedUsername });
+
+  // No es necesario llamar a la función viewProfile, ya que estamos guardando los cambios sin verificación adicional
+}
+
+
+/*function saveProfileChanges(button) {
   const profileContainer = button.closest('.profile-container');
 
   if (!profileContainer) {
@@ -310,7 +340,7 @@ function saveProfileChanges(button) {
 
   // Mostrar el perfil actualizado
   viewProfile(button); // Llamamos a viewProfile para volver a mostrar el perfil después de editar
-}
+}*/
 
 // Funciones para la navegación de páginas
 function prevPage() {

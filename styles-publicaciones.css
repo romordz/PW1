@@ -151,8 +151,6 @@ body {
     margin-top: 20px;
   }
   
-  /* ... (resto de estilos existentes) ... */
-  
   .profile-container {
     position: fixed;
     top: 90px;
@@ -161,7 +159,7 @@ body {
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 999; /* Asegura que esté sobre otras capas */
+    z-index: 999;
     display: flex;
     align-items: center;
   }
@@ -203,12 +201,12 @@ body {
 }
 
 .select-wrapper select {
-  appearance: none; /* Oculta el estilo predeterminado del combobox */
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: #fff;
   border: 1px solid #ced4da;
-  padding: 8px 32px 8px 12px; /* Ajusta los valores según necesites */
+  padding: 8px 32px 8px 12px;
   font-size: 16px;
   border-radius: 4px;
   cursor: pointer;
@@ -216,7 +214,7 @@ body {
 
 .select-wrapper select:focus {
   outline: none;
-  border-color: #007bff; /* Cambia el color del borde al estar enfocado */
+  border-color: #007bff;
 }
 
 /* Icono para el combobox */
@@ -228,9 +226,23 @@ body {
   pointer-events: none;
 }
 
-/* Cambia el color del icono según tus preferencias */
 .select-icon::after {
-  content: '\25BC'; /* Código Unicode para la flecha hacia abajo */
+  content: '\25BC';
   font-size: 14px;
   color: #333;
+}
+
+.btn-custom {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #0056b3;
 }
