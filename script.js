@@ -92,10 +92,24 @@ function validateRegistration() {
 }
 
 //publicaciones
+function toggleImagePreview() {
+  const imagePreview = document.getElementById('imagePreview');
+
+  // Cambiar la visibilidad de la vista previa
+  if (imagePreview.style.display === 'none' || !imagePreview.src) {
+    // Si la vista previa está oculta o no hay imagen seleccionada, mostrarla
+    showImagePreview();
+  } else {
+    // Si la vista previa está visible, ocultarla
+    imagePreview.style.display = 'none';
+    document.getElementById('toggleImageButton').textContent = '👁️Mostrar Vista Previa'; // Cambiar texto del botón
+  }
+}
 
 function showImagePreview() {
   const imageInput = document.getElementById('postImage');
   const imagePreview = document.getElementById('imagePreview');
+  const toggleButton = document.getElementById('toggleImageButton');
 
   // Verificar si se seleccionó una imagen
   if (imageInput.files && imageInput.files[0]) {
@@ -103,11 +117,15 @@ function showImagePreview() {
     const image = URL.createObjectURL(selectedFile);
     imagePreview.src = image;
     imagePreview.style.display = 'block'; // Mostrar la vista previa
+    toggleButton.textContent = '👁️Ocultar Vista Previa'; // Cambiar texto del botón
   } else {
     // Si no se seleccionó una imagen, ocultar la vista previa
     imagePreview.style.display = 'none';
+    toggleButton.textContent = '👁️Mostrar Vista Previa'; // Cambiar texto del botón
   }
 }
+
+
 
 function createPost() {
   const title = document.getElementById('postTitle').value;
