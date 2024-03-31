@@ -49,11 +49,14 @@
             <input type="email" id="email" name="email" class="form-control" required>
           </div>
           <div class="mb-3">
-            <label for="profileImage" class="form-label">Imagen de perfil:</label>
-            <input type="file" id="profileImage" name="profileImage" accept="image/*" class="form-control" required>
+            <label for="postImage" class="form-label">Imagen de perfil;:</label>
+            <input type="file" id="postImage" name="postImage" accept="image/*" class="form-control" required>
           </div>
           <div id="imagePreviewContainer" class="mb-3">
-            <img id="imagePreview" class="img-thumbnail">
+            <img id="imagePreview" class="img-thumbnail" style="max-width: 400px; max-height: 400px;">
+        </div>
+          <div class="mb-3">
+            <button id="toggleImageButton" onclick="toggleImagePreview()" class="btn btn-primary">👁️Mostrar Vista Previa</button>
           </div>
           <div class="mb-3">
             <label for="username" class="form-label">Nombre de usuario:</label>

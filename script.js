@@ -117,11 +117,11 @@ function showImagePreview() {
     const image = URL.createObjectURL(selectedFile);
     imagePreview.src = image;
     imagePreview.style.display = 'block'; // Mostrar la vista previa
-    toggleButton.textContent = '👁️Ocultar Vista Previa'; // Cambiar texto del botón
+    toggleButton.textContent = '👁️Ocultar Vista Previa';
   } else {
     // Si no se seleccionó una imagen, ocultar la vista previa
     imagePreview.style.display = 'none';
-    toggleButton.textContent = '👁️Mostrar Vista Previa'; // Cambiar texto del botón
+    toggleButton.textContent = '👁️Mostrar Vista Previa';
   }
 }
 
