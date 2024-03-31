@@ -1,6 +1,24 @@
 let totalPosts = 0;
 const postsPerPage = 10;
 let currentPage = 1;
+
+//modificar perfil
+document.addEventListener('DOMContentLoaded', function () {
+  const editProfileButton = document.getElementById('editProfileButton');
+  const editProfileContainer = document.getElementById('editProfileContainer');
+
+  editProfileButton.addEventListener('click', function () {
+    editProfileContainer.style.display = editProfileContainer.style.display === 'none' ? 'block' : 'none';
+  });
+
+  // Agrega el manejo de eventos para guardar los cambios del perfil
+  const saveProfileChangesButton = document.getElementById('saveProfileChanges');
+  saveProfileChangesButton.addEventListener('click', function () {
+    // Aquí puedes agregar la lógica para guardar los cambios del perfil
+    console.log('Guardando cambios en el perfil...');
+  });
+});
+
 document.getElementById('navbar-placeholder').innerHTML = '<object type="text/html" data="navbar.html"></object>';
 function switchForm() {
   document.getElementById('loginForm').classList.toggle('active-form');
@@ -399,3 +417,5 @@ function showPosts() {
 // Inicializar la paginación al cargar la página
 showPosts();
 generatePaginationButtons();
+
+
