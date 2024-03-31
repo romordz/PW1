@@ -1,7 +1,7 @@
 let totalPosts = 0;
 const postsPerPage = 10;
 let currentPage = 1;
-
+document.getElementById('navbar-placeholder').innerHTML = '<object type="text/html" data="navbar.html"></object>';
 
 function switchForm() {
   document.getElementById('loginForm').classList.toggle('active-form');
@@ -421,3 +421,4 @@ function showPosts() {
 // Inicializar la paginación al cargar la página
 showPosts();
 generatePaginationButtons();
+
