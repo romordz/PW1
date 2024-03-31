@@ -2,7 +2,6 @@ let totalPosts = 0;
 const postsPerPage = 10;
 let currentPage = 1;
 document.getElementById('navbar-placeholder').innerHTML = '<object type="text/html" data="navbar.html"></object>';
-
 function switchForm() {
   document.getElementById('loginForm').classList.toggle('active-form');
   document.getElementById('registroForm').classList.toggle('active-form');
@@ -20,27 +19,6 @@ function loginUser() {
     window.location.href = 'home.html';
   }
 }
-
-//Registro
-const profileImageInput = document.getElementById('profileImage');
-// Obtener el elemento de vista previa de la imagen
-const imagePreview = document.getElementById('imagePreview');
-
-// Agregar un event listener para el cambio en el input de la imagen
-profileImageInput.addEventListener('change', function() {
-  // Verificar si se seleccionó una imagen
-  if (this.files && this.files[0]) {
-    // Crear un objeto URL para la imagen seleccionada
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      // Actualizar el atributo src de la imagen de vista previa con la URL de la imagen seleccionada
-      imagePreview.src = e.target.result;
-    }
-    // Leer el archivo seleccionado como una URL de datos
-    reader.readAsDataURL(this.files[0]);
-  }
-});
-
 
 function validateRegistration() {
   const firstName = document.getElementById('firstName').value;
@@ -421,4 +399,3 @@ function showPosts() {
 // Inicializar la paginación al cargar la página
 showPosts();
 generatePaginationButtons();
-
