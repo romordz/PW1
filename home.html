@@ -18,30 +18,35 @@
         <button class="btn btn-light">Buscar</button>
       </div>
       <!-- Búsqueda avanzada -->
-      <div class="advanced-search">
-        <h3 class="text-white mb-3">Búsqueda Avanzada</h3>
-        <form>
-          <div class="mb-3">
-            <label for="advancedText" class="form-label text-white">Texto:</label>
-            <input type="text" id="advancedText" name="advancedText" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label for="advancedCategory" class="form-label text-white">Categoría:</label>
-            <input type="text" id="advancedCategory" name="advancedCategory" class="form-control">
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-md-6 mb-3">
-              <label for="startDate" class="form-label text-white">Fecha Inicio:</label>
-              <input type="date" id="startDate" name="startDate" class="form-control">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="endDate" class="form-label text-white">Fecha Fin:</label>
-              <input type="date" id="endDate" name="endDate" class="form-control">
-            </div>
-          </div>
-          <button type="button" class="btn btn-light btn-sm">Buscar</button>
-        </form>
+<div class="advanced-search">
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#advancedSearchCollapse" aria-expanded="false" aria-controls="advancedSearchCollapse">
+    Búsqueda Avanzada
+  </button>
+  <div class="collapse" id="advancedSearchCollapse">
+    <form>
+      <div class="mb-3">
+        <label for="advancedText" class="form-label text-white">Texto:</label>
+        <input type="text" id="advancedText" name="advancedText" class="form-control">
       </div>
+      <div class="mb-3">
+        <label for="advancedCategory" class="form-label text-white">Categoría:</label>
+        <input type="text" id="advancedCategory" name="advancedCategory" class="form-control">
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 mb-3">
+          <label for="startDate" class="form-label text-white">Fecha Inicio:</label>
+          <input type="date" id="startDate" name="startDate" class="form-control">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="endDate" class="form-label text-white">Fecha Fin:</label>
+          <input type="date" id="endDate" name="endDate" class="form-control">
+        </div>
+      </div>
+      <button type="button" class="btn btn-light btn-sm">Buscar</button>
+    </form>
+  </div>
+</div>
+
     </div>
   </header>
   
