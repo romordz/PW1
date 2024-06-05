@@ -1,20 +1,20 @@
 .search-bar {
   margin-top: 10px;
-  margin-bottom: 20px; /* Añadido margen inferior */
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
 }
 
 .search-bar input {
   padding: 8px;
-  width: 300px; /* Ajustado el ancho del input */
+  width: 300px;
   border-radius: 20px;
 }
 
 .search-bar button {
   background-color: #39569c;
   color: #fff;
-  padding: 8px 15px; /* Ajustado el padding horizontal */
+  padding: 8px 15px;
   border: none;
   cursor: pointer;
   margin-left: 5px;
@@ -23,11 +23,11 @@
 
 .advanced-search {
   margin-top: 20px;
-  margin-bottom: 20px; /* Añadido margen inferior */
+  margin-bottom: 20px;
   padding: 10px;
   background-color: #39569c;
   border-radius: 8px;
-  width: 90%; /* Ajustado el ancho */
+  width: 90%;
   overflow-x: auto;
   white-space: nowrap;
   display: flex;
@@ -36,14 +36,14 @@
 }
 
 .advanced-search h3 {
-  font-size: 1.2em; /* Ajustado el tamaño de fuente */
+  font-size: 1.2em;
   color: #fff;
-  margin-bottom: 10px; /* Aumentado el margen inferior */
+  margin-bottom: 10px;
 }
 
 .advanced-search form {
   display: flex;
-  flex-wrap: wrap; /* Añadido wrap para que los elementos se ajusten */
+  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
 }
@@ -58,13 +58,13 @@
 .advanced-search select {
   padding: 8px;
   box-sizing: border-box;
-  width: 200px; /* Ajustado el ancho de los inputs */
+  width: 200px;
 }
 
 .advanced-search button {
   background-color: #304b87;
   color: #fff;
-  padding: 8px 10px; /* Ajustado el padding horizontal */
+  padding: 8px 10px; 
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -82,7 +82,7 @@ footer {
 }
 
 header {
-  position: relative; /* Ajuste para que los elementos posicionados dentro del header sean relativos a él */
+  position: relative;
 }
 
 .profile-container {
@@ -91,7 +91,6 @@ header {
   right: 10px;
 }
 
-/* Ajustes para que la imagen de perfil sea más pequeña */
 .profile-picture img {
   width: 25px;
   height: 25px;
@@ -101,12 +100,10 @@ header {
   font-size: 14px;
 }
 
-/* Reducir el tamaño de la fuente del nombre de usuario */
 .profile-container h2 {
   font-size: 14px;
 }
 
-/* Eliminar la barra de color gris */
 aside.bg-light {
   background-color: transparent !important;
   border: none !important;
@@ -121,4 +118,47 @@ aside.bg-light {
 .custom-width {
   max-width: 800px;
 }
+
+.profile-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+}
+  
+  .profile-container .profile-picture img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .profile-container h2 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .profile-container .profile-info p {
+    margin: 5px 0;
+  }
+  
+  .profile-container button {
+    background-color: #4267b2;
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  
+  .profile-container button:hover {
+    background-color: #39569c;
+  }
 

@@ -19,14 +19,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-document.getElementById('navbar-placeholder').innerHTML = '<object type="text/html" data="navbar.html"></object>';
+document.getElementById('navbar-placeholder').innerHTML = '<object type="text/html" data="navbar.jsp"></object>';
 function switchForm() {
   document.getElementById('loginForm').classList.toggle('active-form');
   document.getElementById('registroForm').classList.toggle('active-form');
 }
 
 function logout() {
-  window.location.href = "iniciosesion-regstro.html";
+  window.location.href = "iniciosesion-regstro.jsp";
 }
 
 //login
@@ -34,10 +34,25 @@ function loginUser() {
   const isLoggedIn = true;
 
   if (isLoggedIn) {
-    window.location.href = 'home.html';
+    window.location.href = 'home.jsp';
   }
 }
+document.getElementById('editFotoPerfil').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('fotoPerfilPreview');
 
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                }
+
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "#";
+            }
+        });
 function validateRegistration() {
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
@@ -83,10 +98,23 @@ function validateRegistration() {
 
   // Si todas las validaciones son exitosas, puedes enviar el formulario
   alert('Registro exitoso. Redirigiendo a la página principal.');
-  window.location.href = 'home.html';
+  window.location.href = 'home.jsp';
   return true;
 }
 
+function validarInicioSesion() {
+    var usuario = document.getElementById("loginUsername").value;
+    var contraseña = document.getElementById("loginPassword").value;
+
+    // Validar campos obligatorios
+    if (usuario.trim() === "" || contraseña.trim() === "") {
+      alert("Por favor, complete todos los campos.");
+      return false; // Detener el envío del formulario si hay campos vacíos
+    }
+
+    return true; // Permitir el envío del formulario si todas las validaciones son exitosas
+  }
+  
 //publicaciones
 function toggleImagePreview() {
   const imagePreview = document.getElementById('imagePreview');
@@ -418,4 +446,28 @@ function showPosts() {
 showPosts();
 generatePaginationButtons();
 
+function validarFormulario() {
+    var searchTerm = document.getElementById("searchTerm").value;
+    if (searchTerm.trim() === "") {
+        alert("Por favor ingresa un término de búsqueda.");
+        return false; // Detener el envío del formulario
+    }
+    return true; // Continuar con el envío del formulario
+}
+
+function validarFormularioAvanzado() {
+    var advancedText = document.getElementById("advancedText").value;
+    var advancedCategory = document.getElementById("advancedCategory").value;
+    var startDate = document.getElementById("startDate").value;
+    var endDate = document.getElementById("endDate").value;
+
+    // Verificar si todos los campos están vacíos
+    if (advancedText.trim() === "" && advancedCategory.trim() === "" && startDate.trim() === "" && endDate.trim() === "") {
+        alert("Por favor ingresa al menos un criterio de búsqueda.");
+        window.location.href = "home.jsp"; // Redirigir la página
+        return false; // Detener el envío del formulario
+    }
+
+    return true; // Continuar con el envío del formulario
+}
 
