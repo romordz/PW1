@@ -1,13 +1,43 @@
-/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Color de fondo */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
   }
   
+  header {
+    background-color: #39569c;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
   .container {
     max-width: 800px;
     margin: auto;
     padding: 20px;
+  }
+  
+.page-header {
+    background-color: #0B6CFB;
+    color: #fff;
+    text-align: center;
+    padding:10px 0;
+    margin-bottom: 20px;
+  }
+  
+  .page-header h1 {
+    background-color: #0B6CFB;
+    margin: 0;
+    font-size: 2em;
   }
   
   .profile-container {
@@ -15,7 +45,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   .profile-picture img {
@@ -84,3 +114,48 @@ body {
     margin-top: 20px;
   }
   
+  .perfil-container {
+    position: fixed;
+    top: 10px; /* Ajusta la distancia desde el borde superior según sea necesario */
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+}
+  
+  .perfil-container .profile-picture img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .perfil-container h2 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .perfil-container .profile-info p {
+    margin: 5px 0;
+  }
+  
+  .perfil-container button {
+    background-color: #4267b2;
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  
+  .perfil-container button:hover {
+    background-color: #39569c;
+  }
+  .img-thumbnail {
+            max-width: 300px;
+  }
