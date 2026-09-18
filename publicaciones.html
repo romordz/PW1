@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mis Publicaciones</title>
-  <!-- Agrega los enlaces de Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles-publicaciones.css">
 </head>
@@ -17,7 +16,6 @@
   <div class="container">
     <main>
       <section class="post-container">
-        <!-- Formulario de Crear Publicación -->
         <form id="createForm" class="post-form">
           <h2>Crear Publicación</h2>
           <div class="mb-3">
@@ -49,15 +47,13 @@
               <option value="Deportes">Deportes</option>
               <option value="Viajes">Viajes</option>
               <option value="Música">Música</option>
-              <!--mas opciones (base de datos) -->
             </select>
           </div>
           <button type="button" class="btn btn-primary" onclick="createPost()">Publicar</button>
         </form>
 
-        <!-- Lista de Publicaciones -->
         <div id="postList" class="post-list">
-          <!-- Aquí se mostrarán las publicaciones -->
+          <!-- publicaciones -->
         </div>
       </section>
     </main>
@@ -68,7 +64,6 @@
     </button>
     
 
-  <!-- Agrega el script de Bootstrap al final del cuerpo del documento -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>

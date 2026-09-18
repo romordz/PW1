@@ -9,7 +9,6 @@ public class Publicacion {
     private Date fechaPublicacion;
     private String categoria;
 
-    // Constructor, getters y setters
     public Publicacion() {}
 
     public String getTitulo() {

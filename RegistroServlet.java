@@ -28,7 +28,7 @@ public class RegistroServlet extends HttpServlet {
             Apellidomat == null || Apellidomat.isEmpty() || FechaNacimiento == null || FechaNacimiento.isEmpty() || CorreoElectronico == null || CorreoElectronico.isEmpty() ||
             NombreUsuario == null || NombreUsuario.isEmpty() || Contrasena == null || Contrasena.isEmpty()) {
             out.println("Todos los campos son obligatorios.");
-            return; // Detener la ejecución si algún campo obligatorio está vacío
+            return;
         }
 
         LocalDate fechaAlta = LocalDate.now();
@@ -37,11 +37,9 @@ public class RegistroServlet extends HttpServlet {
         try {
             LocalDate fechaActual = LocalDate.now();
             int edad = Period.between(fechaNacimiento, fechaActual).getYears();
-    // Establecer conexión con la base de datos
     Class.forName("com.mysql.cj.jdbc.Driver");
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/paginaweb?serverTimezone=America/Monterrey", "root", "abc123");
     
-    // Construir y ejecutar la consulta SQL para insertar el nuevo usuario en la tabla correspondiente
     PreparedStatement pstmt = con.prepareStatement("INSERT INTO Usuario (NombreUsuario, Nombre, FechaNacimiento, CorreoElectronico, FechaAlta, Contrasena, SegundoNombre, Apellido, Edad, Apellidomat) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     pstmt.setString(1, NombreUsuario);
     pstmt.setString(2, Nombre);
@@ -54,7 +52,6 @@ public class RegistroServlet extends HttpServlet {
     pstmt.setInt(9, edad);
     pstmt.setString(10, Apellidomat);
     
-    // Ejecutar la consulta
     int rowsAffected = pstmt.executeUpdate();
     
     if (rowsAffected > 0) {
@@ -65,15 +62,12 @@ public class RegistroServlet extends HttpServlet {
     
     con.close();
 } catch (SQLException e) {
-    // Manejar excepción SQL
     e.printStackTrace();
     out.println("Error SQL al registrar el usuario: " + e.getMessage());
 } catch (ClassNotFoundException e) {
-    // Manejar excepción de clase no encontrada
     e.printStackTrace();
     out.println("Error al cargar el controlador de la base de datos: " + e.getMessage());
 } catch (Exception e) {
-    // Manejar cualquier otra excepción
     e.printStackTrace();
     out.println("Error inesperado al registrar el usuario: " + e.getMessage());
 }

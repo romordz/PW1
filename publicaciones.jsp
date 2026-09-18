@@ -26,7 +26,6 @@
     <button class="btn btn-light" type="submit" href="BusquedaServlet">Buscar</button>
           </form>
       </div>
-      <!-- Búsqueda avanzada -->
 <div class="advanced-search">
   <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#advancedSearchCollapse" aria-expanded="false" aria-controls="advancedSearchCollapse">
     Búsqueda Avanzada

@@ -25,8 +25,8 @@ public class Servlet extends HttpServlet {
         }
 
         if (validarUsuario(usuario, contraseña)) {
-            String nombreCompleto = obtenerNombreCompleto(usuario); // Función para obtener el nombre completo del usuario
-        String correoElectronico = obtenerCorreoElectronico(usuario); // Función para obtener el correo electrónico del usuario
+            String nombreCompleto = obtenerNombreCompleto(usuario);
+        String correoElectronico = obtenerCorreoElectronico(usuario);
         int edad = obtenerEdad(usuario);
         
             HttpSession session = request.getSession();
@@ -71,10 +71,9 @@ public class Servlet extends HttpServlet {
         pstmt.setString(1, usuario);
         ResultSet rs = pstmt.executeQuery();
         
-        // Verificar si se encontró algún resultado
         if (rs.next()) {
             String contraseñaDB = rs.getString("Contrasena");
-            return contraseña.equals(contraseñaDB); // Comparar las contraseñas
+            return contraseña.equals(contraseñaDB);
         } else {
             return false;
         }

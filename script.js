@@ -2,7 +2,6 @@ let totalPosts = 0;
 const postsPerPage = 10;
 let currentPage = 1;
 
-//modificar perfil
 document.addEventListener('DOMContentLoaded', function () {
   const editProfileButton = document.getElementById('editProfileButton');
   const editProfileContainer = document.getElementById('editProfileContainer');
@@ -11,10 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
     editProfileContainer.style.display = editProfileContainer.style.display === 'none' ? 'block' : 'none';
   });
 
-  // Agrega el manejo de eventos para guardar los cambios del perfil
   const saveProfileChangesButton = document.getElementById('saveProfileChanges');
   saveProfileChangesButton.addEventListener('click', function () {
-    // Aquí puedes agregar la lógica para guardar los cambios del perfil
     console.log('Guardando cambios en el perfil...');
   });
 });
@@ -29,7 +26,6 @@ function logout() {
   window.location.href = "iniciosesion-regstro.jsp";
 }
 
-//login
 function loginUser() {
   const isLoggedIn = true;
 
@@ -62,41 +58,35 @@ function validateRegistration() {
   const password = document.getElementById('password').value;
   const confirmPassword = document.getElementById('confirmPassword').value;
 
-  // Validación de caracteres alfabéticos para Nombre(s) y Apellidos
   const nameRegex = /^[A-Za-záéíóúüñÁÉÍÓÚÜÑ\s]+$/;
   if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
     alert('Ingresa solo caracteres alfabéticos para Nombre(s) y Apellidos.');
     return false;
   }
 
-  // Validación de fecha de nacimiento
   const currentDate = new Date();
   if (new Date(birthdate) > currentDate) {
     alert('La Fecha de Nacimiento no puede ser posterior a la fecha actual.');
     return false;
   }
 
-  // Validación de formato de correo electrónico
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     alert('Ingresa un correo electrónico válido.');
     return false;
   }
 
-  // Validación de la contraseña
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
   if (!passwordRegex.test(password)) {
     alert('La contraseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un signo de puntuación.');
     return false;
   }
 
-  // Validación de coincidencia de contraseña y confirmación
   if (password !== confirmPassword) {
     alert('La contraseña y la confirmación de contraseña deben coincidir.');
     return false;
   }
 
-  // Si todas las validaciones son exitosas, puedes enviar el formulario
   alert('Registro exitoso. Redirigiendo a la página principal.');
   window.location.href = 'home.jsp';
   return true;
@@ -106,27 +96,22 @@ function validarInicioSesion() {
     var usuario = document.getElementById("loginUsername").value;
     var contraseña = document.getElementById("loginPassword").value;
 
-    // Validar campos obligatorios
     if (usuario.trim() === "" || contraseña.trim() === "") {
       alert("Por favor, complete todos los campos.");
-      return false; // Detener el envío del formulario si hay campos vacíos
+      return false;
     }
 
-    return true; // Permitir el envío del formulario si todas las validaciones son exitosas
+    return true;
   }
   
-//publicaciones
 function toggleImagePreview() {
   const imagePreview = document.getElementById('imagePreview');
 
-  // Cambiar la visibilidad de la vista previa
   if (imagePreview.style.display === 'none' || !imagePreview.src) {
-    // Si la vista previa está oculta o no hay imagen seleccionada, mostrarla
     showImagePreview();
   } else {
-    // Si la vista previa está visible, ocultarla
     imagePreview.style.display = 'none';
-    document.getElementById('toggleImageButton').textContent = '👁️Mostrar Vista Previa'; // Cambiar texto del botón
+    document.getElementById('toggleImageButton').textContent = '👁️Mostrar Vista Previa';
   }
 }
 
@@ -135,15 +120,13 @@ function showImagePreview() {
   const imagePreview = document.getElementById('imagePreview');
   const toggleButton = document.getElementById('toggleImageButton');
 
-  // Verificar si se seleccionó una imagen
   if (imageInput.files && imageInput.files[0]) {
     const selectedFile = imageInput.files[0];
     const image = URL.createObjectURL(selectedFile);
     imagePreview.src = image;
-    imagePreview.style.display = 'block'; // Mostrar la vista previa
+    imagePreview.style.display = 'block';
     toggleButton.textContent = '👁️Ocultar Vista Previa';
   } else {
-    // Si no se seleccionó una imagen, ocultar la vista previa
     imagePreview.style.display = 'none';
     toggleButton.textContent = '👁️Mostrar Vista Previa';
   }
@@ -157,7 +140,6 @@ function createPost() {
   const imageInput = document.getElementById('postImage');
   const category = document.getElementById('postCategory').value;
 
-  // Validar que los campos requeridos estén completos
   if (!title || !content || !category) {
     alert('Todos los campos marcados con (*) son obligatorios.');
     return;
@@ -165,14 +147,11 @@ function createPost() {
 
   let image = '';
   if (imageInput.files.length > 0) {
-    // Si se seleccionó un archivo, usa el primer archivo
     const selectedFile = imageInput.files[0];
     image = URL.createObjectURL(selectedFile);
   }
-  // Limpiar el formulario después de crear la publicación
   document.getElementById('createForm').reset();
 
-  // Crear un nuevo elemento de publicación
   const postElement = document.createElement('div');
   postElement.className = 'post';
   postElement.innerHTML = `
@@ -184,7 +163,6 @@ function createPost() {
     <button onclick="deletePost(this)">Eliminar</button>
   `;
 
-  // Agregar la nueva publicación a la lista
   postList.appendChild(postElement);
 }
 
@@ -196,13 +174,11 @@ function editPost(button) {
     return;
   }
 
-  // Obtener elementos de la publicación
   const titleElement = postElement.querySelector('h3');
   const contentElement = postElement.querySelector('p');
   const imageElement = postElement.querySelector('img');
   const categoryElement = postElement.querySelector('p:last-child');
 
-  // Crear campos de entrada editables
   const titleInput = document.createElement('input');
   titleInput.value = titleElement.innerText;
 
@@ -215,19 +191,16 @@ function editPost(button) {
   const categoryInput = document.createElement('input');
   categoryInput.value = categoryElement.innerText.replace('Categoría: ', '');
 
-  // Agregar clases para ocultar/mostrar elementos
   titleElement.classList.add('hidden');
   contentElement.classList.add('hidden');
   imageElement && imageElement.classList.add('hidden');
   categoryElement.classList.add('hidden');
 
-  // Insertar campos de entrada en la publicación
   postElement.insertBefore(titleInput, postElement.firstChild);
   postElement.insertBefore(contentInput, postElement.firstChild);
   imageElement && postElement.insertBefore(imageInput, postElement.firstChild);
   postElement.insertBefore(categoryInput, postElement.firstChild);
 
-  // Crear botón de guardar cambios
   const saveButton = document.createElement('button');
   saveButton.textContent = 'Guardar';
   saveButton.addEventListener('click', () => saveChanges(postElement));
@@ -235,16 +208,13 @@ function editPost(button) {
   postElement.appendChild(saveButton);
 }
 
-//TODO:hacer que funciones el boton de editar y guardar cambios
 
 function saveChanges(postElement) {
-  // Obtener elementos de la publicación
   const titleInput = postElement.querySelector('input');
   const contentInput = postElement.querySelector('textarea');
   const imageInput = postElement.querySelector('input:nth-child(3)');
   const categoryInput = postElement.querySelector('input:last-child');
 
-  // Verificar si los campos de entrada existen
   if (!titleInput || !contentInput || !categoryInput) {
     console.error('No se pudieron encontrar los campos de entrada.');
     return;
@@ -261,7 +231,6 @@ function saveChanges(postElement) {
   }
   console.log('Guardando cambios:', { title, content, image, category });
 
-  // Actualizar elementos de la publicación con los nuevos valores
   postElement.querySelector('h3').innerText = title;
   postElement.querySelector('p').innerText = content;
 
@@ -274,7 +243,6 @@ function saveChanges(postElement) {
 
   postElement.querySelector('p:last-child').innerText = `Categoría: ${category}`;
 
-  // Eliminar campos de entrada y mostrar elementos originales
   titleInput.remove();
   contentInput.remove();
   imageInput && imageInput.remove();
@@ -291,7 +259,6 @@ function deletePost(button) {
   postElement.remove();
 }
 
-// Función para visualizar el perfil
 function viewProfile(button) {
   const postElement = button.closest('.post');
 
@@ -300,15 +267,12 @@ function viewProfile(button) {
     return;
   }
 
-  // Obtener información del usuario desde la publicación
   const username = postElement.querySelector('.post-header h3').innerText;
   const fullName = postElement.querySelector('.post-header p').innerText;
 
-  // Crear contenedor para mostrar la información del perfil
   const profileContainer = document.createElement('div');
   profileContainer.classList.add('profile-container');
 
-  // Mostrar información del perfil
   profileContainer.innerHTML = `
     <h2>${fullName}</h2>
     <p>Nombre de usuario: ${username}</p>
@@ -316,7 +280,6 @@ function viewProfile(button) {
     <button onclick="editProfile(this)">Editar Perfil</button>
   `;
 
-  // Reemplazar contenido de la publicación con el perfil
   postElement.innerHTML = '';
   postElement.appendChild(profileContainer);
 }
@@ -330,15 +293,12 @@ function editProfile(button) {
     return;
   }
 
-  // Obtener información del usuario desde el contenedor del perfil
   const username = profileContainer.querySelector('.profile-info h2').innerText;
   const fullName = profileContainer.querySelector('.profile-info p:nth-of-type(1)').innerText;
 
-  // Crear contenedor para mostrar el formulario de edición del perfil
   const editProfileContainer = document.createElement('div');
   editProfileContainer.classList.add('profile-container');
 
-  // Mostrar formulario de edición del perfil con información actual
   editProfileContainer.innerHTML = `
     <div class="profile-info">
       <label for="editUsername">Nombre de usuario:</label>
@@ -351,40 +311,18 @@ function editProfile(button) {
 }
 
 function saveProfileChanges(button) {
-  // Obtener el contenedor del perfil directamente
   const profileContainer = document.querySelector('.profile-container');
 
-  // Verificar si se encontró el contenedor del perfil
   if (!profileContainer) {
     console.error('No se pudo encontrar el contenedor del perfil.');
     return;
   }
 
-  // Obtener el valor editado del nombre de usuario directamente
   const editedUsername = profileContainer.querySelector('#editUsername').value;
   console.log('Guardando cambios en el perfil:', { editedUsername });
 
-  // No es necesario llamar a la función viewProfile, ya que estamos guardando los cambios sin verificación adicional
 }
 
-
-/*function saveProfileChanges(button) {
-  const profileContainer = button.closest('.profile-container');
-
-  if (!profileContainer) {
-    console.error('No se pudo encontrar el contenedor del perfil.');
-    return;
-  }
-
-  // Obtener valores editados desde el formulario
-  const editedUsername = profileContainer.querySelector('#editUsername').value;
-  console.log('Guardando cambios en el perfil:', { editedUsername });
-
-  // Mostrar el perfil actualizado
-  viewProfile(button); // Llamamos a viewProfile para volver a mostrar el perfil después de editar
-}*/
-
-// Funciones para la navegación de páginas
 function prevPage() {
   if (currentPage > 1) {
     currentPage--;
@@ -397,18 +335,14 @@ function nextPage() {
   showPosts();
 }
 
-// Función para mostrar las publicaciones según la página actual
 function generatePaginationButtons() {
-  // Obtener el elemento paginationPages
   const paginationPages = document.getElementById('paginationPages');
 
-  // Verificar si paginationPages es null
   if (!paginationPages) {
     console.error('El elemento paginationPages no se encontró en el documento.');
     return;
   }
 
-  // Lógica para calcular el número total de páginas
   const totalPpages = Math.ceil(totalPosts / postsPerPage);
 
   paginationPages.innerHTML = '';
@@ -421,13 +355,11 @@ function generatePaginationButtons() {
   }
 }
 
-// Función para ir a una página específica al hacer clic en el botón de página
 function goToPage(pageNumber) {
   currentPage = pageNumber;
   showPosts();
 }
 
-// Función para mostrar las publicaciones según la página actual
 function showPosts() {
   const allPosts = document.querySelectorAll('.post');
   const startIndex = (currentPage - 1) * postsPerPage;
@@ -442,7 +374,6 @@ function showPosts() {
   });
 }
 
-// Inicializar la paginación al cargar la página
 showPosts();
 generatePaginationButtons();
 
@@ -450,9 +381,9 @@ function validarFormulario() {
     var searchTerm = document.getElementById("searchTerm").value;
     if (searchTerm.trim() === "") {
         alert("Por favor ingresa un término de búsqueda.");
-        return false; // Detener el envío del formulario
+        return false;
     }
-    return true; // Continuar con el envío del formulario
+    return true;
 }
 
 function validarFormularioAvanzado() {
@@ -461,13 +392,12 @@ function validarFormularioAvanzado() {
     var startDate = document.getElementById("startDate").value;
     var endDate = document.getElementById("endDate").value;
 
-    // Verificar si todos los campos están vacíos
     if (advancedText.trim() === "" && advancedCategory.trim() === "" && startDate.trim() === "" && endDate.trim() === "") {
         alert("Por favor ingresa al menos un criterio de búsqueda.");
-        window.location.href = "home.jsp"; // Redirigir la página
-        return false; // Detener el envío del formulario
+        window.location.href = "home.jsp";
+        return false;
     }
 
-    return true; // Continuar con el envío del formulario
+    return true;
 }
 

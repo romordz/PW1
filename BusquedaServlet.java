@@ -37,7 +37,6 @@ public class BusquedaServlet extends HttpServlet {
             ResultSet rs = pstmt.executeQuery();
 
             while(rs.next()) {
-                // Agregar resultados de la búsqueda a la lista de publicaciones
                 Publicacion publicacion = new Publicacion();
                 publicacion.setTitulo(rs.getString("Titulo"));
                 publicacion.setContenido(rs.getString("Contenido"));
@@ -77,7 +76,6 @@ public class BusquedaServlet extends HttpServlet {
                     publicacion.setFechaPublicacion(rs.getDate("FechaPublicacion"));
                     publicacion.setCategoria(rs.getString("Categoria"));
                     publicaciones.add(publicacion);
-// Imprimir los datos recuperados en la consola
     System.out.println("Titulo: " + publicacion.getTitulo());
     System.out.println("Contenido: " + publicacion.getContenido());
     System.out.println("Fecha de Publicacion: " + publicacion.getFechaPublicacion());

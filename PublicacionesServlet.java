@@ -34,30 +34,7 @@ public class PublicacionesServlet extends HttpServlet {
         int usuarioID = (int) session.getAttribute("usuarioID");
         
 
-        /*Part filePart = request.getPart("postImage"); NECESITA enctype="multipart/form-data" en publicaciones.jsp junto al method=post
-        if (filePart != null && filePart.getSize() > 0) {
-            // Obtener el nombre del archivo
-            String fileName = filePart.getSubmittedFileName();
-            // Guardar la imagen en la carpeta del servidor
-            String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-            String filePath = uploadPath + File.separator + fileName;
-            try (InputStream inputStream = filePart.getInputStream();
-                    FileOutputStream outputStream = new FileOutputStream(filePath)) {
-                byte[] buffer = new byte[4096];
-                int bytesRead;
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
-                }
-                imagen = "uploads" + File.separator + fileName; // Guardar la ruta de la imagen en la base de datos
-            } catch (IOException e) {
-                out.println("<p>Error al subir la imagen: " + e.getMessage() + "</p>");
-                return;
-            }
-        }*/
+        
         try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/paginaweb", "root", "abc123")) {
             String sql = "INSERT INTO Publicacion (Titulo, Contenido, Imagen, Categoria, Estatus, FechaPublicacion, UsuarioID) VALUES (?, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -81,35 +58,6 @@ public class PublicacionesServlet extends HttpServlet {
             out.println("<p>Error al conectar con la base de datos: " + e.getMessage() + "</p>");
         }
     }
-    /*protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/paginaweb?serverTimezone=America/Monterrey", "root", "abc123");
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Publicacion");
-
-            List<Publicacion> publicaciones = new ArrayList<>();
-            while (rs.next()) {
-                Publicacion publicacion = new Publicacion();
-                publicacion.setTitulo(rs.getString("Titulo"));
-                publicacion.setContenido(rs.getString("Contenido"));
-                publicacion.setFechaPublicacion(rs.getDate("FechaPublicacion"));
-                publicacion.setCategoriaId(rs.getInt("CategoriaId"));
-                publicaciones.add(publicacion);
-            }
-
-            con.close();
-            HttpSession session = request.getSession();
-            session.setAttribute("publicaciones", publicaciones);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        } catch (Exception e) {
-            out.println(e);
-        }
-    }*/
      String obtenerNombreUsuario(int usuarioID) {
                 try {
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/paginaweb?serverTimezone=America/Monterrey", "root", "abc123");

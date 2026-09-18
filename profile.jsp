@@ -26,7 +26,6 @@
         <p>Edad: <%= session.getAttribute("edad") %> años</p>
         <button class="btn btn-primary" id="editProfileButton">Editar Perfil</button>
       
-        <!-- Contenedor para campos de edición de perfil (inicialmente oculto) -->
         <div id="editProfileContainer" style="display: none;">
           <div class="mb-3">
             <label for="editUsername">Nombre de usuario:</label>
@@ -49,11 +48,9 @@
         
    <aside class="bg-light p-4">
     <div class="perfil-container">
-        <!-- Mostrar la foto de perfil -->
         <a href="publicaciones.jsp">
             <img src="profile.jpg" alt="Foto de perfil" class="rounded-circle" style="width: 100px;">
         </a>
-        <!-- Mostrar el nombre de usuario -->
         <h2 class="mb-0"><%= session.getAttribute("usuario") %></h2>
     </div>
    </aside>

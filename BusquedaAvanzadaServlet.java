@@ -17,7 +17,6 @@ public class BusquedaAvanzadaServlet extends HttpServlet {
      @Override
     public void init() throws ServletException {
         super.init();
-        // Aquí se puede realizar cualquier inicialización necesaria, como la conexión a la base de datos
         List<Publicacion> publicaciones = obtenerTodasLasPublicaciones();
         getServletContext().setAttribute("publicacion", publicaciones);
     }
@@ -123,7 +122,6 @@ System.out.println("endDate:" + endDate);
     publicacion.setCategoria(rs.getString("Categoria"));
     publicaciones.add(publicacion);
 
-    // Imprimir los datos recuperados en la consola
     System.out.println("Titulo: " + publicacion.getTitulo());
     System.out.println("Contenido: " + publicacion.getContenido());
     System.out.println("Fecha de Publicacion: " + publicacion.getFechaPublicacion());
